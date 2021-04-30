@@ -5,9 +5,9 @@ name: CI
 on:
   # mainブランチに pushされた場合 と pull requestされた場合に に実行
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # ワークフローを任意に手動で起動することを許可します
   workflow_dispatch:
@@ -51,7 +51,7 @@ jobs:
 
     # ビルドやデプロイを実行するイメージを指定
     runs-on: ubuntu-latest
-    
+
     # ジョブに定義するステップ（タスク）を設定
     steps:
       # nodeをインストールする場合に指定するコマンド
@@ -79,10 +79,10 @@ jobs:
   build:
     # ジョブ名を設定
     name: Build
-    
+
     # ビルドやデプロイを実行するイメージを指定
     runs-on: ubuntu-latest
-    
+
     # ジョブに定義するステップ（タスク）を設定
     steps:
       # nodeをインストールする場合に指定するコマンド
