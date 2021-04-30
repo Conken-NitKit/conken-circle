@@ -1,34 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## プロジェクト作成
+### 該当コミット
+- Initial commit from Create Next App
+  - https://github.com/Conken-NitKit/conken-circle/commit/9e0e7df60958f24e1ffd9bc9597bc6f533fb7691
+- Install TypeScript
+  - https://github.com/Conken-NitKit/conken-circle/commit/651d29916d6596bf0f1b0453b83b8529fea482ef
+- Set up ESLint, Prettier
+  - https://github.com/Conken-NitKit/conken-circle/commit/7e3700144f363f006ab208dd9dbf4e8c11f011c6
+### 参考資料
+- 【入門】create-next-appでNext.jsとTypeScript環境を構築
+  - https://mo-gu-mo-gu.com/create-next-app-typescript
+- Node.jsとnpmをアップデートする方法
+  - https://parashuto.com/rriver/tools/updating-node-js-and-npm
 
-## Getting Started
+## VScode Settings
+### 該当コミット
+- Add vscode settings
+  - https://github.com/Conken-NitKit/conken-circle/commit/0f49caef117455b916e787382f427ec17f17c300
+### 参考資料
+- 【Visual Studio Code】v1.12.1 設定のためのSettings.jsonファイルについて
+  - https://qiita.com/ayatokura/items/4301e0d1d8b339f722eb
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## GitHub Actions (CI)
+### 該当コミット
+- Create main.yml
+  - https://github.com/Conken-NitKit/conken-circle/commit/f4415a17226b68c6a88cc7a2291c7cf4fa7f7b95
+- Fix format error
+  - https://github.com/Conken-NitKit/conken-circle/commit/6e3877c878d1b02e7e2ee01973d038d8ac39229f
+### 参考資料
+- GitHub ActionsでCI/CD環境を構築する ～ReactアプリをFirebaseへデプロイするyamlファイルの書き方～
+  - https://snowsystem.net/git/github-actions-react-firebase/
