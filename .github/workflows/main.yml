@@ -1,0 +1,109 @@
+# GitHub Actionsの画面で表示されるワークフロー名
+name: CI
+
+# ワークフローをトリガーするイベントを設定
+on:
+  # mainブランチに pushされた場合 と pull requestされた場合に に実行
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # ワークフローを任意に手動で起動することを許可します
+  workflow_dispatch:
+
+# ワークフローに定義するジョブを設定
+jobs:
+  lint:
+    # ジョブ名を設定
+    name: Lint
+
+    # ビルドやデプロイを実行するイメージを指定
+    runs-on: ubuntu-latest
+
+    # ジョブに定義するステップ（タスク）を設定
+    steps:
+      # nodeをインストールする場合に指定するコマンド
+      - name: Installing node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # packege.jsonを元に必要なパッケージをインストール
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Lintチェック
+      - name: Run lint
+        run: yarn run lint
+
+  format:
+    # ジョブ名を設定
+    name: Format check
+
+    # ビルドやデプロイを実行するイメージを指定
+    runs-on: ubuntu-latest
+    
+    # ジョブに定義するステップ（タスク）を設定
+    steps:
+      # nodeをインストールする場合に指定するコマンド
+      - name: Installing node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # packege.jsonを元に必要なパッケージをインストール
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Formatチェック
+      - name: Run format check
+        run: yarn run format
+
+  build:
+    # ジョブ名を設定
+    name: Build
+    
+    # ビルドやデプロイを実行するイメージを指定
+    runs-on: ubuntu-latest
+    
+    # ジョブに定義するステップ（タスク）を設定
+    steps:
+      # nodeをインストールする場合に指定するコマンド
+      - name: Installing node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - uses: actions/checkout@v1
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # packege.jsonを元に必要なパッケージをインストール
+      - name: Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # ビルド
+      - name: Run build
+        run: yarn run build
