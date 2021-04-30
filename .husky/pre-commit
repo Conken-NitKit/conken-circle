@@ -3,7 +3,4 @@
 ."$(dirmname "$0")/_/husky.sh"
 
 # yarn lint-stagedを実行
-yarn lint:fix
-yarn format:fix
-yarn build
 yarn lint-staged

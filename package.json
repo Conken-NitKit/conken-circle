@@ -48,11 +48,9 @@
     }
   },
   "lint-staged": {
-    "*.@(ts|tsx)": [
-      "yarn lint",
-      "yarn format",
+    "*.@(js|ts|tsx)": [
       "yarn lint:fix",
-      "yarn build"
+      "yarn format:fix"
     ]
   }
 }
