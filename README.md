@@ -41,3 +41,33 @@
 
 - GitHub Actions で CI/CD 環境を構築する ～ React アプリを Firebase へデプロイする yaml ファイルの書き方～
   - https://snowsystem.net/git/github-actions-react-firebase/
+
+### tailwind CSS と emotion の導入
+
+#### 該当コミット
+
+- Add support for tailwind CSS and emotion
+  - https://github.com/Conken-NitKit/conken-circle/commit/9db5d4d91804929d2c72e11f8786c8857467e880
+
+#### 参考資料
+
+- Next.js に入門してみた
+  - https://qiita.com/knjname/items/0223a7dc5eff1ef82e0b
+
+### ローカルでコミットする際の自動テストの導入 (Husky)
+
+#### 該当コミット
+
+- Install husky
+  - https://github.com/Conken-NitKit/conken-circle/commit/c2a5a77aafba03c0ebdce279f4b188f1f5e72773
+- Add support for build check on pre-commit
+  - https://github.com/Conken-NitKit/conken-circle/commit/2803aec53157c0aae88b78c041d60663be178474
+- Add check-types on package.json
+  - https://github.com/Conken-NitKit/conken-circle/commit/1e3447a4e1146e5bbd41d33f67d2f471941b9daa
+- Update steps of pre-commit
+  - https://github.com/Conken-NitKit/conken-circle/commit/0416a7df10e978ce3b19c7acdb89a5f895e2c4bd
+
+#### 参考資料
+
+- Next.js +TypeScript で環境構築！ESLint + Prettier の導入から解析自動化までやってみた
+  - https://zenn.dev/kurao/articles/456f44a6f43d89
