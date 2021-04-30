@@ -10,6 +10,7 @@
     "lint:fix": "yarn lint --fix",
     "format": "prettier --check .",
     "format:fix": "prettier --write .",
+    "check-types": "tsc --noEmit",
     "prepare": "husky install"
   },
   "dependencies": {
