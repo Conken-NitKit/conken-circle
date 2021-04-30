@@ -50,7 +50,8 @@
     "*.@(ts|tsx)": [
       "yarn lint",
       "yarn format",
-      "yarn lint:fix"
+      "yarn lint:fix",
+      "yarn build"
     ]
   }
 }
