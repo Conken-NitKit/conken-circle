@@ -1,4 +1,4 @@
-### プロジェクト作成
+### [1] プロジェクト作成
 
 #### 該当コミット
 
@@ -16,7 +16,7 @@
 - Node.js と npm をアップデートする方法
   - https://parashuto.com/rriver/tools/updating-node-js-and-npm
 
-### VScode Settings
+### [2] VScode Settings
 
 #### 該当コミット
 
@@ -28,7 +28,7 @@
 - 【Visual Studio Code】v1.12.1 設定のための Settings.json ファイルについて
   - https://qiita.com/ayatokura/items/4301e0d1d8b339f722eb
 
-### GitHub Actions (CI)
+### [3] GitHub Actions (CI)
 
 #### 該当コミット
 
@@ -42,7 +42,7 @@
 - GitHub Actions で CI/CD 環境を構築する ～ React アプリを Firebase へデプロイする yaml ファイルの書き方～
   - https://snowsystem.net/git/github-actions-react-firebase/
 
-### tailwind CSS と emotion の導入
+### [4] tailwind CSS と emotion の導入
 
 #### 該当コミット
 
@@ -54,7 +54,7 @@
 - Next.js に入門してみた
   - https://qiita.com/knjname/items/0223a7dc5eff1ef82e0b
 
-### ローカルでコミットする際の自動テストの導入 (Husky)
+### [5] ローカルでコミットする際の自動テストの導入 (Husky)
 
 #### 該当コミット
 
