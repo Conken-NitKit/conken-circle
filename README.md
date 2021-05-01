@@ -1,3 +1,89 @@
+## アーキテクチャ
+
+### コンポーネントのフォルダ構成
+
+```
+.
+├- components // 汎用的なコンポーネント
+|    └ Component1
+|        ├- index.ts
+|        ├- hooks.ts
+|        ├- Component1.ts
+|        └- Container1 // コンポーネントを構成するコンテナ
+|             ├- index.ts
+|             └- Container1.ts
+|             └- Component1 // コンテナを構成する部品
+|                  ├- index.ts
+|                  └- Container1.ts
+|
+├- domains // ドメインを構成するコンポーネント
+|    └ Domain1
+|        | index.ts
+|        ├- hooks.ts
+|        ├- Component1.ts
+|        └- Container1 // コンポーネントを構成するコンテナ
+|             ├- index.ts
+|             └- Container1.ts
+|             └- Component1 // コンテナを構成する部品
+|                  ├- index.ts
+|                  └- Container1.ts
+|
+└ pages // ページを構成
+    ├- _app.tsx // 全ページで必要な共通処理を定義
+    |
+    ├- _documents.tsx // <Html> <Head /> など共通レイアウトを定義
+    |
+    └- Domain1 // 各ドメインをページとして定義
+```
+
+#### 各コンポーネントの index.ts 内の処理
+
+```ts
+export { Component1 } from "./Component1";
+```
+
+#### pages ディレクトリで定義される、 Domain ファイル内での処理
+
+```ts
+export { Domain1 as default } from "domains/Domain1";
+```
+
+### レイヤー設計
+
+Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネント側で意識する必要がない様に **「レイヤードアーキテクチャ」** を採用。
+構成は以下の通りである。
+
+```
+.
+└ lib
+    ├- interface // 各レイヤーのinterfaceを定義
+    |    ├- gateway
+    |    |    └- SampleGateway.ts
+    |    |
+    |    └- infrastructure
+    |         └- SampleClient.ts
+    |
+    ├- entity // モデルの型定義
+    |    ├- index.ts // 汎用的なモデル
+    |    └- domain1.ts // 特定ドメイン内のみで使われるモデル
+    |
+    ├- gateway // 実際にAPI経由でデータの入出力を行う処理の実装を定義（ pages/_app.tsx から呼び出す）
+    |    ├- SampleGateway1.ts
+    |    └- SampleGateway2.ts
+    |
+    ├- usecase // UI(コンポーネント側)から実際に呼び出される関数を定義
+    |    ├- SampleUsecase1.ts
+    |    └- SampleUsecase2.ts
+    |
+    ├- infrastructure // APIを呼び出すために必要な前処理（クライアントの用意）
+    |    ├- SampleClient1.ts
+    |    └- SampleClient2.ts
+    |
+    ├- context.ts // contextをパッケージ化。（ pages/_app.tsx から呼び出す）
+```
+
+## 環境構築
+
 ### [1] プロジェクト作成
 
 #### 該当コミット
