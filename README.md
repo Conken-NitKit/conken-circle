@@ -77,8 +77,8 @@ Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネ�
     |    └- SampleGateway2.ts
     |
     ├- usecase // UI(コンポーネント側)から実際に呼び出される関数を定義
-    |    ├- SampleUsecase1.ts
-    |    └- SampleUsecase2.ts
+    |    ├- SampleUsecase1.tsx
+    |    └- SampleUsecase2.tsx
     |
     ├- infrastructure // APIを呼び出すために必要な前処理（クライアントの用意）
     |    ├- SampleClient1.ts
