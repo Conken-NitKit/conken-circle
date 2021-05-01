@@ -5,9 +5,12 @@
     "node": true
   },
   "extends": [
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "standard",
+    "plugin:import/typescript",
     "prettier" // 必ず末尾に置く
   ],
   "parser": "@typescript-eslint/parser",
@@ -16,16 +19,52 @@
       "jsx": true
     },
     "ecmaVersion": 12,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-use-before-define": "off",
+    "import/no-default-export": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal", // baseUrlを使ったimportをしているので、デフォルトにこれを追加
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc" }
+      }
+    ],
+    // useEffect内でPromiseそのまま呼べなかったりして不便であるため
+    "@typescript-eslint/no-floating-promises": "off"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["pages/**/*.tsx"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
 }
