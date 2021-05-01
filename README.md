@@ -7,33 +7,31 @@
 ├- components // 汎用的なコンポーネント
 |    └ Component1
 |        ├- index.ts
-|        ├- hooks.ts
-|        ├- Component1.ts
+|        ├- hooks.tsx
+|        ├- Component1.tsx
 |        └- Container1 // コンポーネントを構成するコンテナ
 |             ├- index.ts
-|             └- Container1.ts
+|             └- Container1.tsx
 |             └- Component1 // コンテナを構成する部品
 |                  ├- index.ts
-|                  └- Container1.ts
+|                  └- Container1.tsx
 |
 ├- domains // ドメインを構成するコンポーネント
 |    └ Domain1
 |        | index.ts
-|        ├- hooks.ts
-|        ├- Component1.ts
+|        ├- hooks.tsx
+|        ├- Component1.tsx
 |        └- Container1 // コンポーネントを構成するコンテナ
 |             ├- index.ts
-|             └- Container1.ts
+|             └- Container1.tsx
 |             └- Component1 // コンテナを構成する部品
 |                  ├- index.ts
-|                  └- Container1.ts
+|                  └- Container1.tsx
 |
 └ pages // ページを構成
     ├- _app.tsx // 全ページで必要な共通処理を定義
-    |
     ├- _documents.tsx // <Html> <Head /> など共通レイアウトを定義
-    |
-    └- Domain1 // 各ドメインをページとして定義
+    └- Domain1.tsx // 各ドメインをページとして定義
 ```
 
 #### 各コンポーネントの index.ts 内の処理
