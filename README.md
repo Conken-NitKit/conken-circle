@@ -53,6 +53,11 @@ export { Domain1 as default } from "domains/Domain1";
 Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネント側で意識する必要がない様に **「レイヤードアーキテクチャ」** を採用。
 構成は以下の通りである。
 
+- entity: プロダクトで扱うドメインの型定義
+- usecase: UI(コンポーネント側)から実際に呼び出される関数を定義
+- gateway: 実際に API 経由でデータの入出力を行う処理の実装を定義（ pages/\_app.tsx から呼び出す）
+- infrastructure: API を呼び出すために必要な前処理（クライアントの用意）
+
 ```
 .
 └ lib
@@ -79,8 +84,21 @@ Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネ�
     |    ├- SampleClient1.ts
     |    └- SampleClient2.ts
     |
-    ├- context.ts // contextをパッケージ化。（ pages/_app.tsx から呼び出す）
+    └- context.ts // contextをパッケージ化（ pages/_app.tsx から呼び出す）
 ```
+
+#### 参考にした記事
+
+- ディレクトリ構成図を書くときに便利な記号
+  - https://qiita.com/paty-fakename/items/c82ed27b4070feeceff6
+- web フロントエンドから webAPI を呼び出すのを wrap するアレの名前
+  - https://nekogata.hatenablog.com/entry/2019/06/30/211904
+- React で作る中規模 SPA のレイヤードアーキテクチャ
+  - https://www.gixo.jp/blog/16133/
+- フロントエンドで Clean Architecture を適用してみる(+サンプルコード)
+  - https://qiita.com/ttiger55/items/50d88e9dbf3039d7ab66
+- Firebase をフロントエンドから適切に隠蔽するための「Hooks Injection パターン」
+  - https://tech.jxpress.net/entry/never-give-up-firebase
 
 ## 環境構築
 
