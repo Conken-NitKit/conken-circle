@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import React from "react";
 
 import { MetaData, MetaHead } from "components/MetaHead";
