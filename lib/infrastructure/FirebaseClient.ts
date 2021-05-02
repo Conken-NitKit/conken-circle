@@ -8,7 +8,7 @@ import {
 } from "lib/interfaces/infrastructure/FirebaseClient";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_DATABASE,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
