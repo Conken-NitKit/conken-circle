@@ -1,3 +1,13 @@
+## 企画概要
+親しい友人が推している商品のみを知りたい。
+
+## 使用技術
+- Next.js
+- TypeScript
+- Firebase
+- Tailwind.css
+- emotion
+
 ## アーキテクチャ
 
 ### コンポーネントのフォルダ構成
@@ -173,3 +183,14 @@ Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネ�
 
 - Next.js +TypeScript で環境構築！ESLint + Prettier の導入から解析自動化までやってみた
   - https://zenn.dev/kurao/articles/456f44a6f43d89
+
+### Firebase セキュリティ
+
+#### 方針
+
+基本 Config 情報は公開予定。セキュリティに関してはホスト環境を制限することで対応する。
+
+#### 参考資料
+
+- Firestoreを利用するときのセキュリティーチェック？メモ（随時更新）
+  - https://qiita.com/zaburo/items/991d550bb3cf3eabfb99
