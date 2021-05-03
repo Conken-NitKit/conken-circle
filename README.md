@@ -1,7 +1,9 @@
 ## 企画概要
+
 親しい友人が推している商品のみを知りたい。
 
 ## 使用技術
+
 - Next.js
 - TypeScript
 - Firebase
@@ -192,5 +194,5 @@ Firebase や DiscordAPI とのやりとりを各ドメインのコンポーネ�
 
 #### 参考資料
 
-- Firestoreを利用するときのセキュリティーチェック？メモ（随時更新）
+- Firestore を利用するときのセキュリティーチェック？メモ（随時更新）
   - https://qiita.com/zaburo/items/991d550bb3cf3eabfb99
