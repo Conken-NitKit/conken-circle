@@ -1,15 +1,20 @@
 import { AppProps } from "next/app";
 import React, { useState } from "react";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 import { GatewayContext, InfrastructureContext } from "lib/context";
 import { AuthGatewayImpl } from "lib/gateway/AuthGateway";
 import { FirebaseClientImpl } from "lib/infrastructure/FirebaseClient";
 
+export const queryClient = new QueryClient();
+
 export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <DIProvider>
-      <Component {...pageProps} />
-    </DIProvider>
+    <QueryClientProvider client={queryClient}>
+      <DIProvider>
+        <Component {...pageProps} />
+      </DIProvider>
+    </QueryClientProvider>
   );
 };
 
