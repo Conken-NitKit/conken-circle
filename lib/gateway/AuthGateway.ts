@@ -1,4 +1,3 @@
-import { User } from "lib/entity";
 import { AuthGateway } from "lib/interfaces/gateway/AuthGateway";
 import {
   FirebaseAuthState,
