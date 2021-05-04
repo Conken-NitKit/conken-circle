@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useMyProfileQuery } from "lib/usecase/UserUsecase";
+
 import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
 import { Settings } from "./Settings";
@@ -35,21 +37,24 @@ const Follow = styled.p`
   font-size: 1.3vw;
 `;
 
-export function ProfileContainer() {
+export function ProfileContainer(): JSX.Element {
+  const { data, isLoading } = useMyProfileQuery();
   return (
     <>
-      <Icon />
-      <Settings />
-      <ProfileEdit />
-      <BackHome />
-      <UserName>ユーザー名</UserName>
-      <BioGraphy>
-        プロフィール
-        <br />
-        っっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっl
-      </BioGraphy>
-      <Follow>フォロー人</Follow>
-      <Follow>フォロワー人</Follow>
+      {isLoading ? (
+        <React.Fragment />
+      ) : (
+        <>
+          <Icon />
+          <Settings />
+          <ProfileEdit />
+          <BackHome />
+          <UserName>{data.name}</UserName>
+          <BioGraphy>{data.biography}</BioGraphy>
+          <Follow>{data.follows.length}人</Follow>
+          <Follow>{data.followers.length}人</Follow>
+        </>
+      )}
     </>
   );
 }
