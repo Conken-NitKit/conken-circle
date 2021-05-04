@@ -28,7 +28,7 @@ const SettingItem = styled.li`
   letter-spacing: 2px;
 `;
 
-export function Settings() {
+export function Settings(): JSX.Element {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
