@@ -1,3 +1,5 @@
+import { User } from "lib/entity";
+
 export const FIREBASE_AUTH_STATE = {
   PENDING: "pending",
   NOT_AUTHORIZED: "not_authorized",
@@ -22,4 +24,7 @@ export abstract class FirebaseClient {
 
   abstract getAuthState(): FirebaseAuthState;
   abstract getIdToken(): Promise<string>;
+  abstract getUid(): string;
+
+  abstract postUserInfo(user: User): void;
 }

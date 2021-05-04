@@ -23,6 +23,8 @@
   "devDependencies": {
     "@emotion/core": "^11.0.0",
     "@emotion/styled": "^11.3.0",
+    "@firebase/app-types": "^0.6.2",
+    "@firebase/firestore-types": "^2.2.0",
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@typescript-eslint/eslint-plugin": "^4.22.0",

@@ -1,3 +1,4 @@
+import { User } from "lib/entity";
 import { AuthGateway } from "lib/interfaces/gateway/AuthGateway";
 import {
   FirebaseAuthState,
@@ -13,8 +14,24 @@ export class AuthGatewayImpl extends AuthGateway {
     await this.firebaseClient.signInWithEmailAndPassword(email, password);
   }
 
-  async signUp(email: string, _: string, password: string): Promise<void> {
+  async signUp(
+    email: string,
+    username: string,
+    password: string
+  ): Promise<void> {
     await this.firebaseClient.createUserWithEmailAndPassword(email, password);
+    const userId = this.firebaseClient.getUid();
+    this.firebaseClient.postUserInfo({
+      id: userId,
+      mail: email,
+      name: username,
+      biography: "",
+      iconImage: null,
+      follows: [],
+      followers: [],
+      userListIds: [],
+      bookMarks: [],
+    });
   }
 
   onAuthStateChanged(fn: (nreState: FirebaseAuthState) => unknown): () => void {

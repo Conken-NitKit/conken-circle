@@ -1,6 +1,11 @@
+/* eslint-disable import/no-duplicates */
 import firebase from "firebase/app";
 
+import "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
+
+import { User } from "lib/entity";
 import {
   FirebaseAuthState,
   FirebaseClient,
@@ -10,6 +15,7 @@ import {
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_DATABASE,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_SENDER_ID,
@@ -46,6 +52,20 @@ export class FirebaseClientImpl extends FirebaseClient {
     await app.auth().signInWithEmailAndPassword(email, password);
   }
 
+  postUserInfo(user: User): void {
+    if (this.authState !== FIREBASE_AUTH_STATE.AUTHORIZED)
+      throw new Error("User is not logged in!");
+    console.log(firebaseConfig);
+    app.firestore().collection("users").doc(user.id).set(user);
+    app
+      .firestore()
+      .collection("user")
+      .get()
+      .then((snapshot) =>
+        snapshot.forEach((item) => console.log(item.id, item.data()))
+      );
+  }
+
   getAuthState(): FirebaseAuthState {
     return this.authState;
   }
@@ -54,6 +74,12 @@ export class FirebaseClientImpl extends FirebaseClient {
     if (this.authState !== FIREBASE_AUTH_STATE.AUTHORIZED)
       throw new Error("User is not logged in!");
     return app.auth().currentUser.getIdToken();
+  }
+
+  getUid(): string {
+    if (this.authState !== FIREBASE_AUTH_STATE.AUTHORIZED)
+      throw new Error("User is not logged in!");
+    return app.auth().currentUser.uid;
   }
 
   onAuthStateChanged(fn: (newState: FirebaseAuthState) => unknown): () => void {

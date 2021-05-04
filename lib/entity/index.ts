@@ -3,7 +3,7 @@ export interface User {
   mail: string; // メアド
   name: string; // 名前
   biography: string; // 説明文
-  iconImage: string; // アイコン画像
+  iconImage?: string; // アイコン画像
   follows: string[]; // userIdのリスト
   followers: string[]; // userIdのリスト
   userListIds: string[]; // userListIdのリスト
