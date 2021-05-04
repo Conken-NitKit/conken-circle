@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
+import { Settings } from "./Settings";
 
 const Icon = styled.div`
   width: 10vw;
@@ -38,6 +39,7 @@ export function ProfileContainer() {
   return (
     <>
       <Icon />
+      <Settings />
       <ProfileEdit />
       <BackHome />
       <UserName>ユーザー名</UserName>
