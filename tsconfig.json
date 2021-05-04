@@ -16,6 +16,7 @@
     "baseUrl": "."
   },
   "include": [
+    "pages/_document.tsx",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",

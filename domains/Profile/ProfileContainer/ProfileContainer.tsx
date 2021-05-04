@@ -42,14 +42,14 @@ export function ProfileContainer() {
       <Settings />
       <ProfileEdit />
       <BackHome />
-      <UserName>ユーザー名</UserName>
+      <UserName>北城櫂</UserName>
       <BioGraphy>
-        プロフィール
+        北九州高専生２年
         <br />
-        っっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっっl
+        コンケン所属
       </BioGraphy>
-      <Follow>フォロー人</Follow>
-      <Follow>フォロワー人</Follow>
+      <Follow>フォロー１２３人</Follow>
+      <Follow>フォロワー２１人</Follow>
     </>
   );
 }
