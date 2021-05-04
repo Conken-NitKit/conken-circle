@@ -7,7 +7,7 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    branches: [main, develop]
 
   # ワークフローを任意に手動で起動することを許可します
   workflow_dispatch:
