@@ -1,5 +1,8 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
+
+import { useMyProfileQuery } from "lib/usecase/UserUsecase";
 
 import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
@@ -35,21 +38,27 @@ const Follow = styled.p`
   font-size: 1.3vw;
 `;
 
-export function ProfileContainer() {
+export function ProfileContainer(): JSX.Element {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
+  const { data, isLoading } = useMyProfileQuery();
   return (
     <>
-      <Icon />
-      <Settings />
-      <ProfileEdit />
-      <BackHome />
-      <UserName>北城櫂</UserName>
-      <BioGraphy>
-        北九州高専生２年
-        <br />
-        コンケン所属
-      </BioGraphy>
-      <Follow>フォロー１２３人</Follow>
-      <Follow>フォロワー２１人</Follow>
+      {isLoading ? (
+        <React.Fragment />
+      ) : (
+        <>
+          <Icon />
+          <Settings />
+          <ProfileEdit />
+          <BackHome />
+          <UserName>{data.name}</UserName>
+          <BioGraphy>{data.biography}</BioGraphy>
+          <Follow>{data.follows.length}人</Follow>
+          <Follow>{data.followers.length}人</Follow>
+        </>
+      )}
     </>
   );
 }

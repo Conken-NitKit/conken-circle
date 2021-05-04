@@ -76,7 +76,6 @@ const Star = styled.img`
 
 export function PostModal() {
   const [modal, setModal] = useState<boolean>(false);
-  const [evaluation, setEvaluation] = useState<number>(0);
 
   return (
     <>

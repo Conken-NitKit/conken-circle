@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
+import { useQuery, UseQueryResult } from "react-query";
 
 import { GatewayContext } from "lib/context";
 import {
@@ -41,4 +42,12 @@ export const authRedirect = <P extends unknown>(
 
     return authState !== allowedStatus ? <div /> : <PageComponent {...props} />;
   };
+};
+
+export const useAuthStateQuery = (): UseQueryResult<
+  FirebaseAuthState,
+  unknown
+> => {
+  const { authGateway } = useContext(GatewayContext);
+  return useQuery("authState", () => authGateway.getAuthState());
 };
