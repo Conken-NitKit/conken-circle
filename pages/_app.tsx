@@ -10,8 +10,6 @@ import { MockClientImpl } from "lib/infrastructure/MockClient";
 
 export const queryClient = new QueryClient();
 
-export const queryClient = new QueryClient();
-
 export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <QueryClientProvider client={queryClient}>
