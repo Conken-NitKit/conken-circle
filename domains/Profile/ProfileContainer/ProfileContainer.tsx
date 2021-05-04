@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
@@ -38,6 +39,9 @@ const Follow = styled.p`
 `;
 
 export function ProfileContainer(): JSX.Element {
+  const router = useRouter();
+  const { id } = router.query;
+  console.log(id);
   const { data, isLoading } = useMyProfileQuery();
   return (
     <>
