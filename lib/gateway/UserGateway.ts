@@ -10,4 +10,8 @@ export class UserGatewayImpl extends UserGateway {
   async fetchMyProfile(): Promise<User> {
     return this.mockClient.fetchMyProfile();
   }
+
+  async fetchProfile(userId: string): Promise<User> {
+    return this.mockClient.fetchProfile(userId);
+  }
 }

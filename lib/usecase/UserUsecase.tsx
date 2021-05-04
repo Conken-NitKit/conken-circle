@@ -9,9 +9,9 @@ export const useMyProfileQuery = (): UseQueryResult<User, unknown> => {
   return useQuery("myProfile", () => userGateway.fetchMyProfile());
 };
 
-/*
-export const useMyProfileQuery = (userId: string): UseQueryResult<User, unknown> => {
+export const useMockProfileQuery = (
+  userId: string
+): UseQueryResult<User, unknown> => {
   const { userGateway } = useContext(GatewayContext);
   return useQuery(["profile", userId], () => userGateway.fetchProfile(userId));
 };
-*/

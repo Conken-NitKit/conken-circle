@@ -2,7 +2,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
-import { useMyProfileQuery } from "lib/usecase/UserUsecase";
+import {
+  useMyProfileQuery,
+  useMockProfileQuery,
+} from "lib/usecase/UserUsecase";
 
 import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
@@ -42,7 +45,9 @@ export function ProfileContainer(): JSX.Element {
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
-  const { data, isLoading } = useMyProfileQuery();
+  const { data, isLoading } = useMockProfileQuery(
+    typeof id === "string" ? id : ""
+  );
   return (
     <>
       {isLoading ? (
