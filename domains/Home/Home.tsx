@@ -1,3 +1,11 @@
+import React from "react";
+
+import { HomeContainer } from "./HomeContainer";
+
+export function Home() {
+  return <HomeContainer />;
+}
+=======
 import { NextPage } from "next";
 import React from "react";
 
