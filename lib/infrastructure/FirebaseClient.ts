@@ -1,6 +1,10 @@
+/* eslint-disable import/no-duplicates */
 import firebase from "firebase/app";
 
+import "firebase/app";
 import "firebase/auth";
+import "firebase/firestore";
+
 import {
   FirebaseAuthState,
   FirebaseClient,
@@ -11,6 +15,7 @@ const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_DOMAIN,
   projectId: process.env.NEXT_PUBLIC_FIREBASE_DATABASE,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
