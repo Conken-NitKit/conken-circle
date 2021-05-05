@@ -3,7 +3,7 @@ import { FirebaseAuthState } from "../infrastructure/FirebaseClient";
 export abstract class AuthGateway {
   abstract signIn(email: string, password: string): Promise<void>;
   abstract signUp(
-    emai: string,
+    email: string,
     userName: string,
     password: string
   ): Promise<void>;

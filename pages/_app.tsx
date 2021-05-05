@@ -23,7 +23,9 @@ export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
 const DIProvider: React.FC = ({ children }) => {
   const [firebaseClient] = useState(new FirebaseClientImpl());
   const [mockClient] = useState(new MockClientImpl());
-  const [authGateway] = useState(new AuthGatewayImpl(firebaseClient));
+  const [authGateway] = useState(
+    new AuthGatewayImpl(firebaseClient, mockClient)
+  );
   const [userGateway] = useState(new UserGatewayImpl(mockClient));
 
   return (
