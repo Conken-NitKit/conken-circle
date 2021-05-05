@@ -1,13 +1,46 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import { useQuery, UseQueryResult } from "react-query";
+import {
+  useMutation,
+  UseMutationResult,
+  useQuery,
+  UseQueryResult,
+} from "react-query";
 
 import { GatewayContext } from "lib/context";
 import {
   FirebaseAuthState,
   FIREBASE_AUTH_STATE,
 } from "lib/interfaces/infrastructure/FirebaseClient";
+
+export const useMySignUpMutate = (): UseMutationResult<
+  string,
+  unknown,
+  { email: string; username: string; password: string },
+  unknown
+> => {
+  const { authGateway } = useContext(GatewayContext);
+  return useMutation(
+    async ({
+      email,
+      username,
+      password,
+    }: {
+      email: string;
+      username: string;
+      password: string;
+    }) => {
+      await authGateway.signUp(email, username, password);
+      return email;
+    },
+    {
+      onSuccess: (ACEmail: string) => {
+        console.log(`login AC!! (${ACEmail})`);
+      },
+    }
+  );
+};
 
 export const useAuthState = (): FirebaseAuthState => {
   const { authGateway } = useContext(GatewayContext);
