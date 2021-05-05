@@ -2,10 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
-import {
-  useMyProfileQuery,
-  useMockProfileQuery,
-} from "lib/usecase/UserUsecase";
+import { useMockProfileQuery } from "lib/usecase/UserUsecase";
 
 import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
@@ -58,10 +55,10 @@ export function ProfileContainer(): JSX.Element {
           <Settings />
           <ProfileEdit />
           <BackHome />
-          <UserName>{data.name}</UserName>
-          <BioGraphy>{data.biography}</BioGraphy>
-          <Follow>{data.follows.length}人</Follow>
-          <Follow>{data.followers.length}人</Follow>
+          <UserName>{data?.name}</UserName>
+          <BioGraphy>{data?.biography}</BioGraphy>
+          <Follow>{data?.follows.length}人</Follow>
+          <Follow>{data?.followers.length}人</Follow>
         </>
       )}
     </>

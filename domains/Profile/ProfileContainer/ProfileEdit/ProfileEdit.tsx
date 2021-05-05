@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { useUserListQuery } from "lib/usecase/UserListUsecase";
+
 const EditButton = styled.p`
   position: absolute;
   left: 30vw;
@@ -36,9 +38,11 @@ const SaveButton = styled.div`
 
 export function ProfileEdit() {
   const [profiler, setProfiler] = useState<boolean>(false);
+  const { data, isLoading } = useUserListQuery();
 
   return (
     <>
+      <div>{JSON.stringify({ data })}</div>
       <EditButton onClick={() => setProfiler(true)}>Edit Profile</EditButton>
       <EditProfiler profiler={profiler}>
         <ProfileText placeholder={"素敵なプロフィールを書きましょう！"} />
