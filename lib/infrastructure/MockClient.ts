@@ -94,4 +94,16 @@ export class MockClientImpl extends MockClient {
       resolve();
     });
   }
+
+  async MySignUp(
+    email: string,
+    username: string,
+    password: string
+  ): Promise<void> {
+    return new Promise((resolve) => {
+      console.log(`${username}'s email is ${email}.`);
+      console.log(`${username}'s password is ${password}.`);
+      resolve();
+    });
+  }
 }
