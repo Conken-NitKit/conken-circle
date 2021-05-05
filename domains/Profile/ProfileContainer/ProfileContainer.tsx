@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import { useMockProfileQuery } from "lib/usecase/UserUsecase";
@@ -8,14 +8,22 @@ import { BackHome } from "./BackHome";
 import { ProfileEdit } from "./ProfileEdit";
 import { Settings } from "./Settings";
 
-const Icon = styled.div`
+const Icon = styled.label<{ url: string }>`
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
-  background: url("/profile.jpg");
-  object-fit: cover;
+  background: url("${(props) => props.url}");
+  background-size: cover;
   position: absolute;
   margin-top: 7vw;
+`;
+
+const IconInput = styled.input`
+  opacity: 0;
+  width: 0;
+  height: 0;
+  display: block;
+  cursor: pointer;
 `;
 
 const UserName = styled.div`
@@ -41,17 +49,29 @@ const Follow = styled.p`
 export function ProfileContainer(): JSX.Element {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+  const [iconUrl, setIconUrl] = useState("/profile.jpg");
   const { data, isLoading } = useMockProfileQuery(
     typeof id === "string" ? id : ""
   );
+
+  const iconInputHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    const imageFile = e.currentTarget.files[0];
+    const imageUrl = URL.createObjectURL(imageFile);
+    setIconUrl(imageUrl);
+  };
   return (
     <>
       {isLoading ? (
         <React.Fragment />
       ) : (
         <>
-          <Icon />
+          <Icon url={iconUrl} htmlFor="icon" />
+          <IconInput
+            id="icon"
+            type="file"
+            accept="image/bmp,image/gif,image/jpeg,image/png,image/tiff,image/webp"
+            onChange={iconInputHandler}
+          />
           <Settings />
           <ProfileEdit />
           <BackHome />

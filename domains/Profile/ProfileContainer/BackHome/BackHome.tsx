@@ -8,7 +8,7 @@ const BackButton = styled.div`
   float: left;
 `;
 
-export function BackHome() {
+export function BackHome(): JSX.Element {
   return (
     <BackButton
       onClick={() => {

@@ -36,7 +36,7 @@ const SaveButton = styled.div`
   margin-top: 0.5vw;
 `;
 
-export function ProfileEdit() {
+export function ProfileEdit(): JSX.Element {
   const [profiler, setProfiler] = useState<boolean>(false);
   const { data, isLoading } = useUserListQuery();
 
